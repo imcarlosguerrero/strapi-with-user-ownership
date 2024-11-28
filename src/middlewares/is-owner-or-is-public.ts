@@ -10,7 +10,7 @@ export default (config: any, { strapi }: { strapi: Core.Strapi }) => {
     const user = ctx.state.user;
     const userId = user?.documentId;
 
-    if (!userId) {
+    if (!userId && !ctx.state.isAuthenticated) {
       return ctx.unauthorized(`You can't access this entry.`);
     }
 
